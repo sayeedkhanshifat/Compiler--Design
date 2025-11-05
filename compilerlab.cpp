@@ -1,21 +1,29 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
 
-bool isNum(string s) {
-    for (int i = 0; i < s.length(); i++) {
-        if (s[i] < '0' || s[i] > '9') {
-            return false;
+void CheckNumeric(string n) {
+    int i;
+    for (i = 0; i < n.length(); i++) {
+        if (n[i] >= '0' && n[i] <= '9') {
+            continue;
+        } else {
+            cout << "Not Numeric Constant" << endl;
+            return; 
         }
     }
-    return true;
+    cout << "Numeric Constant" << endl;
 }
 
 int main() {
-    cout << boolalpha;
-    cout << isNum("12345") << endl;
-    cout << isNum("12a45") << endl;
+    string n;
+    cout << "Enter the input: ";
+    cin >> n;
+
+    CheckNumeric(n);
+
     return 0;
 }
+
 
 
 
