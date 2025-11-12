@@ -1,39 +1,49 @@
 #include <iostream>
 using namespace std;
 
+void check_identifier(string s)
+{
 
-bool isIdentifier(string s) {
-    int i;
+    string keywords[] ={ " int", "float", " double", "char ",  "if ", " while", " for", " else", " return", "void" };
 
-
-    if (!((s[0] >= 'A' && s[0] <= 'Z') ||
-          (s[0] >= 'a' && s[0] <= 'z') ||
-          s[0] == '_'))
-        flag =0;
-
-
-    for (i = 1; i < s.length(); i++) {
-        if (!((s[i] >= 'A' && s[i] <= 'Z') ||
-              (s[i] >= 'a' && s[i] <= 'z') ||
-              (s[i] >= '0' && s[i] <= '9') ||
-              s[i] == '_'))
-            flag=0;
+    for (int k = 0; k<10;k++)
+    {
+        if ( s == keywords[k])
+        {
+            cout<< s << "= Not Identifier (keyword)" << endl;
+            return;
+        }
     }
 
-    flag=1;
-}
 
-int main() {
-    string s;
 
-    cout << "Enter a word: ";
-    cin >> s;
+    int flag = 0;
 
-    if (flag=1)
-        cout << s << " is a valid identifier." << endl;
+    if ((s[0] >= 'a' && s[0] <= 'z') ||
+        (s[0] >= 'A' && s[0] <= 'Z') ||
+        (s[0] == '_'))
+    {
+        flag = 1;
+
+        for (int i = 1; i < s.length(); i++)
+        {
+            if ((s[i] >= 'a' && s[i] <= 'z') ||
+                (s[i] >= 'A' && s[i] <= 'Z') ||
+                (s[i] == '_') ||
+                (s[i] >= '0' && s[i] <= '9'))
+            {
+                flag = 1;
+            }
+            else
+            {
+                flag = 0;
+                break;
+            }
+        }
+    }
+
+    if (flag == 1)
+        cout << s << " is Identifier" << endl;
     else
-        cout << s << " is NOT a valid identifier." << endl;
-
-    return 0;
+        cout << s << " is not Identifier" << endl;
 }
-
